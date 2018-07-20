@@ -1,17 +1,35 @@
 package com.microservice.licenseservice.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "licenses")
 public class License {
-	private String id;
+	@Id
+	@Column(name = "license_id", nullable = false)
+	private String licenseId;
+
+	@Column(name = "organization_id", nullable = false)
 	private String organizationId;
+
+	@Column(name = "product_name", nullable = false)
 	private String productName;
+
+	@Column(name = "license_type", nullable = false)
 	private String licenseType;
 
-	public String getId() {
-		return id;
+	@Column(name = "comment", nullable = false)
+	private String comment;
+
+	public String getlicenseId() {
+		return licenseId;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setlicenseId(String id) {
+		this.licenseId = id;
 	}
 
 	public String getOrganizationId() {
@@ -38,8 +56,16 @@ public class License {
 		this.productName = productName;
 	}
 
+	public String getComment() {
+		return this.comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
 	public License withId(String id) {
-		this.setId(id);
+		this.setlicenseId(id);
 		return this;
 	}
 
@@ -55,6 +81,11 @@ public class License {
 
 	public License withLicenseType(String licenseType) {
 		this.setLicenseType(licenseType);
+		return this;
+	}
+
+	public License withComment(String comment) {
+		this.setComment(comment);
 		return this;
 	}
 }
